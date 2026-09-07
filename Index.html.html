@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miami 305 Plumbing — Plumbing for Properties, Not Just Households</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Spectral:ital@1&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0F1B2B;
+    --navy-soft: #16283C;
+    --teal: #1F5C56;
+    --copper: #C97A3D;
+    --copper-dark: #A8622E;
+    --paper: #EDF2F0;
+    --paper-deep: #E1E9E6;
+    --white: #FFFFFF;
+    --ink: #16232F;
+    --ink-soft: #4B5A66;
+    --line: rgba(15,27,43,0.14);
+    --line-on-navy: rgba(255,255,255,0.16);
+    --radius: 3px;
+    --maxw: 1180px;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    font-family:'Work Sans', sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Spectral', serif;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.15;
+    margin: 0;
+  }
+  p{ margin: 0; }
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width: 100%; display:block; }
+  button{ font-family: inherit; }
+
+  :focus-visible{
+    outline: 2px solid var(--copper);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-row{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  .logo{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    font-family:'Spectral', serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--navy);
+    letter-spacing: 0.2px;
+  }
+  .logo span{
+    font-family:'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.62rem;
+    color: var(--teal);
+    letter-spacing: 0.06em;
+  }
+  nav.primary-nav{
+    display:flex;
+    align-items:center;
+    gap: 36px;
+  }
+  nav.primary-nav a.navlink{
+    font-size: 0.94rem;
+    color: var(--ink-soft);
+    padding: 6px 0;
+    border-bottom: 1px solid transparent;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  nav.primary-nav a.navlink:hover{ color: var(--navy); border-color: var(--copper); }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding: 12px 22px;
+    border-radius: var(--radius);
+    font-size: 0.92rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    cursor:pointer;
+    transition: transform .12s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:active{ transform: translateY(1px); }
+  .btn-copper{ background: var(--copper); color: var(--white); }
+  .btn-copper:hover{ background: var(--copper-dark); }
+  .btn-outline-navy{ background: transparent; color: var(--navy); border-color: var(--navy); }
+  .btn-outline-navy:hover{ background: var(--navy); color: var(--white); }
+  .btn-outline-white{ background: transparent; color: var(--white); border-color: var(--line-on-navy); }
+  .btn-outline-white:hover{ border-color: var(--white); }
+
+  .mobile-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .mobile-toggle svg{ width:26px; height:26px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background: var(--paper);
+    padding: 96px 0 84px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .eyebrow-line{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color: var(--teal);
+    font-size: 0.86rem;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+  .eyebrow-line svg{ width:16px; height:16px; }
+  .hero h1{
+    font-size: clamp(2.3rem, 4vw, 3.4rem);
+    max-width: 13.5ch;
+  }
+  .hero-sub{
+    margin-top: 22px;
+    font-size: 1.12rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+  .hero-actions{
+    margin-top: 34px;
+    display:flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Service-ticket card */
+  .ticket{
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 6px;
+    padding: 30px 30px 26px;
+    position: relative;
+  }
+  .ticket-top{
+    display:flex;
+    justify-content: space-between;
+    align-items:flex-start;
+    margin-bottom: 22px;
+  }
+  .ticket-label{
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.55);
+    font-weight: 600;
+  }
+  .ticket-id{
+    font-family:'Spectral', serif;
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.85rem;
+  }
+  .ticket-rating{
+    display:flex;
+    align-items:baseline;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .ticket-rating .num{
+    font-family:'Spectral', serif;
+    font-size: 2.6rem;
+    font-weight: 600;
+  }
+  .ticket-rating .stars{ color: var(--copper); font-size: 1.1rem; letter-spacing: 2px; }
+  .ticket-rating .count{ color: rgba(255,255,255,0.6); font-size: 0.9rem; }
+
+  .ticket-perf{
+    border-top: 1px dashed var(--line-on-navy);
+    margin: 22px 0;
+  }
+  .ticket-rows{ display:flex; flex-direction:column; gap: 14px; }
+  .ticket-rows .row{
+    display:flex;
+    justify-content: space-between;
+    font-size: 0.94rem;
+  }
+  .ticket-rows .row .k{ color: rgba(255,255,255,0.6); }
+  .ticket-rows .row .v{ font-weight: 600; }
+
+  /* ---------- Fact strip ---------- */
+  .facts{
+    padding: 46px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .facts-row{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .fact{
+    text-align:center;
+    padding: 0 20px;
+    border-left: 1px solid var(--line);
+  }
+  .fact:first-child{ border-left: none; }
+  .fact .num{
+    font-family:'Spectral', serif;
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .fact .label{
+    margin-top: 6px;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Section shared ---------- */
+  section{ padding: 96px 0; }
+  .section-head{
+    max-width: 60ch;
+    margin-bottom: 56px;
+  }
+  .section-head h2{ font-size: clamp(1.7rem, 3vw, 2.2rem); }
+  .section-head p{
+    margin-top: 16px;
+    color: var(--ink-soft);
+    font-size: 1.04rem;
+  }
+
+  /* ---------- Services as line items ---------- */
+  .service-line{
+    display:grid;
+    grid-template-columns: 56px 1fr 1.3fr;
+    gap: 28px;
+    align-items: start;
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+  }
+  .services-list .service-line:last-child{ border-bottom: 1px solid var(--line); }
+  .service-icon{
+    width: 44px; height:44px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius: 50%;
+    background: var(--paper);
+    color: var(--teal);
+  }
+  .service-icon svg{ width:22px; height:22px; }
+  .service-line h3{ font-size: 1.2rem; }
+  .service-line .desc{ color: var(--ink-soft); font-size: 0.98rem; }
+
+  /* ---------- Why professional clients ---------- */
+  .why{
+    background: var(--paper);
+  }
+  .why-grid{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 64px;
+  }
+  .why-copy h2{ font-size: clamp(1.7rem, 3vw, 2.2rem); max-width: 14ch; }
+  .why-copy p{ margin-top: 20px; color: var(--ink-soft); font-size: 1.04rem; max-width: 42ch; }
+  .why-list{ display:flex; flex-direction:column; }
+  .why-item{
+    display:flex;
+    gap: 18px;
+    padding: 22px 0;
+    border-top: 1px solid var(--line);
+  }
+  .why-list .why-item:last-child{ border-bottom: 1px solid var(--line); }
+  .why-item .mark{
+    width: 26px; height:26px;
+    flex: none;
+    border-radius: 50%;
+    background: var(--copper);
+    color: var(--white);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .why-item .mark svg{ width:14px; height:14px; }
+  .why-item h3{ font-size: 1.05rem; font-weight: 600; }
+  .why-item p{ color: var(--ink-soft); margin-top: 4px; font-size: 0.96rem; }
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{
+    background: var(--navy);
+    color: var(--white);
+  }
+  .testimonials .section-head h2{ color: var(--white); }
+  .testimonials .section-head p{ color: rgba(255,255,255,0.6); }
+  .quote-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+  .quote-mark{
+    font-family:'Spectral', serif;
+    font-size: 2.6rem;
+    color: var(--copper);
+    line-height: 1;
+    margin-bottom: 10px;
+    display:block;
+  }
+  .quote-card p.body{
+    font-family:'Spectral', serif;
+    font-size: 1.12rem;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.5;
+  }
+  .quote-card .attrib{
+    margin-top: 18px;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* ---------- CTA banner ---------- */
+  .cta-banner{
+    padding: 84px 0;
+  }
+  .cta-inner{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    gap: 32px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 48px 0;
+  }
+  .cta-inner h2{ font-size: clamp(1.6rem, 3vw, 2.1rem); max-width: 16ch; }
+  .cta-actions{ display:flex; gap:16px; flex-wrap:wrap; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    padding: 64px 0 32px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--line-on-navy);
+  }
+  .footer-logo{
+    font-family:'Spectral', serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--white);
+  }
+  .footer-grid p{ margin-top: 14px; font-size: 0.92rem; max-width: 30ch; }
+  .footer-col h4{
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .footer-col a, .footer-col p{
+    display:block;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+  }
+  .footer-col a:hover{ color: var(--white); }
+  .footer-bottom{
+    display:flex;
+    justify-content: space-between;
+    padding-top: 26px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.45);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px){
+    nav.primary-nav{ display:none; }
+    .mobile-toggle{ display:block; }
+    .hero-grid{ grid-template-columns: 1fr; }
+    .facts-row{ grid-template-columns: repeat(2,1fr); row-gap: 28px; }
+    .fact:nth-child(3){ border-left:none; }
+    .service-line{ grid-template-columns: 44px 1fr; }
+    .service-line .desc{ grid-column: 2; }
+    .why-grid{ grid-template-columns: 1fr; }
+    .quote-grid{ grid-template-columns: 1fr; gap: 44px; }
+    .footer-grid{ grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px){
+    .wrap, .header-row{ padding-left: 20px; padding-right: 20px; }
+    section{ padding: 64px 0; }
+    .hero{ padding: 64px 0 56px; }
+    .footer-grid{ grid-template-columns: 1fr; }
+    .cta-inner{ flex-direction:column; align-items:flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <a href="#top" class="logo">Miami 305 <span>PLUMBING</span></a>
+    <nav class="primary-nav">
+      <a class="navlink" href="#services">Services</a>
+      <a class="navlink" href="#why">For Properties</a>
+      <a class="navlink" href="#reviews">Reviews</a>
+      <a class="navlink" href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <a href="tel:+18779028140" class="btn btn-copper">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5c0 9 7 16 16 16l3-4-6-3-2 2c-3-1-5-3-6-6l2-2-3-6-4 3z"/></svg>
+        (877) 902-8140
+      </a>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B2B" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          Dispatching across Miami-Dade, 24 hours a day
+        </div>
+        <h1>The plumbing team property managers call first.</h1>
+        <p class="hero-sub">Family owned and operating for 3+ years, Miami 305 Plumbing handles emergency repairs, scheduled maintenance, and multi-unit contracts for HOAs, condo boards, and commercial buildings — with a technician who shows you the work, not just the invoice.</p>
+        <div class="hero-actions">
+          <a href="tel:+18779028140" class="btn btn-copper">Call now — we answer 24/7</a>
+          <a href="#contact" class="btn btn-outline-navy">Request a property quote</a>
+        </div>
+      </div>
+
+      <div class="ticket">
+        <div class="ticket-top">
+          <div>
+            <div class="ticket-label">SERVICE RECORD</div>
+          </div>
+          <div class="ticket-id">Miami-Dade, FL</div>
+        </div>
+        <div class="ticket-rating">
+          <span class="num">5.0</span>
+          <span class="stars">★★★★★</span>
+        </div>
+        <div class="ticket-rating" style="margin-bottom:0;">
+          <span class="count">from 145 verified customer reviews</span>
+        </div>
+        <div class="ticket-perf"></div>
+        <div class="ticket-rows">
+          <div class="row"><span class="k">Years in business</span><span class="v">3+</span></div>
+          <div class="row"><span class="k">Availability</span><span class="v">24/7 emergency dispatch</span></div>
+          <div class="row"><span class="k">Ownership</span><span class="v">Family owned & operated</span></div>
+          <div class="row"><span class="k">Coverage</span><span class="v">Residential & commercial</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACT STRIP -->
+  <div class="facts">
+    <div class="wrap facts-row">
+      <div class="fact">
+        <div class="num">5.0★</div>
+        <div class="label">Average rating</div>
+      </div>
+      <div class="fact">
+        <div class="num">145+</div>
+        <div class="label">Customer reviews</div>
+      </div>
+      <div class="fact">
+        <div class="num">24/7</div>
+        <div class="label">Emergency response</div>
+      </div>
+      <div class="fact">
+        <div class="num">3+ yrs</div>
+        <div class="label">Serving Miami-Dade</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Built for properties, not just households</h2>
+        <p>Whether it's a single unit or an entire building, our line items stay the same: diagnose it clearly, fix it right, and leave a record you can hand to your board or ownership group.</p>
+      </div>
+      <div class="services-list">
+
+        <div class="service-line">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M5 19l3-3M16 8l3-3"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Emergency leak detection & repair</h3>
+          <p class="desc">Non-invasive detection that finds the source before we open a wall or a slab — dispatched day or night, with photos and findings documented for your files.</p>
+        </div>
+
+        <div class="service-line">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v10M12 13c-4 2-6 5-6 7a6 6 0 0012 0c0-2-2-5-6-7z"/></svg>
+          </div>
+          <h3>Water heater install & replacement</h3>
+          <p class="desc">Standard and tankless units, sized correctly for occupancy — a common request from our long-term condominium and multi-family clients.</p>
+        </div>
+
+        <div class="service-line">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M9 16h2M13 16h2"/></svg>
+          </div>
+          <h3>HOA & condo maintenance contracts</h3>
+          <p class="desc">Recurring inspection and repair agreements for boards and property managers, with one point of contact and consistent, on-file pricing.</p>
+        </div>
+
+        <div class="service-line">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M8 6h8M6 18h12"/></svg>
+          </div>
+          <h3>Kitchen & bath repair</h3>
+          <p class="desc">Faucets, fixtures, and unit turnovers handled cleanly, so tenant move-ins and inspections stay on schedule.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="why" class="why">
+    <div class="wrap why-grid">
+      <div class="why-copy">
+        <h2>Why buildings keep us on file</h2>
+        <p>Property managers don't get a second chance to explain a bad repair to a board. That's the standard we hold ourselves to on every call.</p>
+      </div>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div>
+            <h3>Upfront, itemized pricing</h3>
+            <p>You get a clear quote before work starts — no surprise add-ons once the job is underway.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div>
+            <h3>Licensed, insured, documented</h3>
+            <p>Every job comes with the paperwork your board or ownership group needs on record.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div>
+            <h3>Real dispatch, not a call center</h3>
+            <p>You speak directly with the team coordinating your technician — no ticket lost in a queue.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+          <div>
+            <h3>The least invasive fix first</h3>
+            <p>We look for the simplest correct repair before recommending demolition or replacement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="reviews" class="testimonials">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What clients tell us afterward</h2>
+        <p>A sample of the 145+ reviews from homeowners, boards, and property managers we've worked with across Miami-Dade.</p>
+      </div>
+      <div class="quote-grid">
+        <div class="quote-card">
+          <span class="quote-mark">"</span>
+          <p class="body">Two other companies quoted extra demolition work that turned out to be unnecessary. This team found a simpler fix and used the existing access point instead.</p>
+          <div class="attrib">Rachel R. · Homeowner</div>
+        </div>
+        <div class="quote-card">
+          <span class="quote-mark">"</span>
+          <p class="body">As a condo association, we needed a plumber who could explain the issue to our board, not just to us. Professional from the first call to the final walkthrough.</p>
+          <div class="attrib">Casa Grande Towers · Condominium Association</div>
+        </div>
+        <div class="quote-card">
+          <span class="quote-mark">"</span>
+          <p class="body">Their quote was roughly half of what another company proposed, with no pressure tactics — just a straightforward, honest assessment.</p>
+          <div class="attrib">Alissandra M. · Homeowner</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner" id="contact">
+    <div class="wrap cta-inner">
+      <h2>Managing a property? Let's get you on our priority list.</h2>
+      <div class="cta-actions">
+        <a href="tel:+18779028140" class="btn btn-copper">Call (877) 902-8140</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Miami 305 Plumbing</div>
+        <p>Family owned plumbing serving homes, HOAs, and commercial properties across Miami-Dade County, 24 hours a day.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#services">Services</a>
+        <a href="#why">For properties</a>
+        <a href="#reviews">Reviews</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>(877) 902-8140</p>
+        <p>Serving Miami-Dade County</p>
+      </div>
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <p>Emergency dispatch: 24/7</p>
+        <p>Office: Mon–Sat, 7am–7pm</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Miami 305 Plumbing. All rights reserved.</span>
+      <span>Licensed & insured</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelector('.mobile-toggle').addEventListener('click', function(){
+    var nav = document.querySelector('.primary-nav');
+    var visible = nav.style.display === 'flex';
+    nav.style.display = visible ? 'none' : 'flex';
+    nav.style.flexDirection = 'column';
+    nav.style.position = 'absolute';
+    nav.style.top = '64px';
+    nav.style.right = '20px';
+    nav.style.background = '#fff';
+    nav.style.padding = '18px 24px';
+    nav.style.borderRadius = '4px';
+    nav.style.boxShadow = '0 8px 24px rgba(15,27,43,0.14)';
+    nav.style.gap = '16px';
+  });
+</script>
+
+</body>
+</html>
